@@ -1,15 +1,9 @@
-'''
-Use a trained pastiche net to stylize images.
-'''
-
-from __future__ import print_function
 import os
 import argparse
 
 import numpy as np
 import tensorflow as tf
-import keras
-import keras.backend as K
+from tensorflow.python.keras import backend as K
 
 from utils import config_gpu, preprocess_image_scale, deprocess_image
 import h5py
@@ -20,18 +14,19 @@ from scipy.misc import imsave
 from model import pastiche_model
 
 if __name__ == '__main__':
-
     parser = argparse.ArgumentParser(description='Use a trained pastiche network.')
-    parser.add_argument('--checkpoint_path', type=str, default='checkpoint')
+    parser.add_argument('--checkpoint_path', type=str, default='data/models/feathers')
     parser.add_argument('--img_size', type=int, default=1024)
     parser.add_argument('--batch_size', type=int, default=4)
     parser.add_argument('--input_path', type=str, default='pastiche_input')
     parser.add_argument('--output_path', type=str, default='pastiche_output')
     parser.add_argument('--use_style_name', default=False, action='store_true')
-    parser.add_argument('--gpu', type=str, default='')
+    parser.add_argument('--gpu', type=str, default='-1')
     parser.add_argument('--allow_growth', default=False, action='store_true')
 
     args = parser.parse_args()
+
+    print(args, type(args))
 
     config_gpu(args.gpu, args.allow_growth)
 

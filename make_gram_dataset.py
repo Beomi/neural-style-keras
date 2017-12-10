@@ -6,9 +6,8 @@ Normalization is done if necessary on the training stage.
 import numpy as np
 import h5py
 
-import keras
-import keras.backend as K
-from keras.applications import vgg16
+from tensorflow.python.keras import backend as K
+from tensorflow.python.keras.applications import vgg16
 
 from training import get_style_features
 from utils import preprocess_image_scale, config_gpu, std_input_list

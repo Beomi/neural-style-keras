@@ -2,14 +2,14 @@
 This module contains functions for building the pastiche model.
 '''
 
-import keras
-from keras.models import Model
-from keras.layers import (Convolution2D, Activation, UpSampling2D,
-                          ZeroPadding2D, Input, BatchNormalization,
-                          merge, Lambda)
+from tensorflow.python import keras
+
+from tensorflow.python.keras.models import Model
+from tensorflow.python.keras.layers import Convolution2D, Activation, UpSampling2D, ZeroPadding2D, Input, BatchNormalization, Lambda
+from tensorflow.python.keras._impl.keras.layers import merge
 from layers import (ReflectionPadding2D, InstanceNormalization,
                     ConditionalInstanceNormalization)
-from keras.initializations import normal
+from tensorflow.python.keras.initializers import glorot_normal as normal
 
 # Initialize weights with normal distribution with std 0.01
 def weights_init(shape, name=None, dim_ordering=None):
